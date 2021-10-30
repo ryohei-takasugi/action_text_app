@@ -13,8 +13,10 @@
   <div class="field">
     <p>title: <%= form.text_field :title, class: "title" %></p>
     <p>tag  : <%= form.number_field :tag, class: "tag" %></p>
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+    <%= form.label :content1 %>
+    <%= form.rich_text_area :content1 %>
+    <%= form.label :content2 %>
+    <%= form.rich_text_area :content2 %>
   </div>
   <div class="actions">
     <%= form.submit %>

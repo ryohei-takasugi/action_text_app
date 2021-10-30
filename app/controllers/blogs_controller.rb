@@ -26,14 +26,15 @@ class BlogsController < ApplicationController
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else
+      binding.pry
       render :new
     end
   end
 
   # PATCH/PUT /blogs/1
   def update
-    puts "### #{@blog.content.body}"
-    puts "### #{params[:blog][:content]}"
+    # puts "### #{@blog.content.body}"
+    # puts "### #{params[:blog][:content]}"
     if @blog.update(blog_params)
       redirect_to @blog, notice: 'Blog was successfully updated.'
     else
@@ -55,6 +56,6 @@ class BlogsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def blog_params
-      params.require(:blog).permit(:content, :tag, :title)
+      params.require(:blog).permit(:content1, :content2, :tag, :title)
     end
 end
