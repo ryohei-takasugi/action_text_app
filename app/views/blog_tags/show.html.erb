@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+<p>title: <%= @blog.title %></p>
+<p>tag: 
+<% @blog.tags.each do |b| %>
+  <%= b.name %>
+<% end %>
+</p>
+<p>content:</p> <p><%= @blog.content %></p>
+<%= link_to 'Edit', edit_blog_tag_path(@blog) %> |
+<%= link_to 'Back', blog_tags_path %>

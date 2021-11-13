@@ -11,5 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require css/kube.css
+ *= require themes/kube.theme.css
+ *= require addons/kube-addons.css
  *= require_self
  */

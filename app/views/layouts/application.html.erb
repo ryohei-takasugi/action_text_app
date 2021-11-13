@@ -4,12 +4,36 @@
     <title>ActionTextApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
+    <div class="is-navbar-container">
+      <div class="is-brand">
+        <b class="is-logo">Brand</b>
+        <!-- nav toggle element -->
+        <a href="#"
+          class="nav-toggle is-push-right-mobile is-shown-mobile icon-kube-menu"
+          data-kube="toggle"
+          data-target="#navbar-demo"></a>
+      </div>
+      <!-- collapsable navigation -->
+      <div id="navbar-demo" class="is-navbar is-hidden-mobile">
+        <nav class="is-push-right">
+          <ul>
+            <li><%= link_to 'home', "/" %></li>
+            <li><%= link_to 'blog', blogs_path %></li>
+            <li><%= link_to 'blog_tag', blog_tags_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <%= yield %>
+    <script>
+        $K.init();
+    </script>
   </body>
 </html>

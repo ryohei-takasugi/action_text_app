@@ -1,5 +1,6 @@
-class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+class BlogTagsController < ApplicationController
+  before_action :set_blog, only: [:show, :destroy]
+  before_action :set_blog_tag, only: [:edit, :update]
 
   # GET /blogs
   def index
@@ -12,16 +13,17 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
-    @blog = Blog.new
+    @blog = BlogTag.new
   end
 
   # GET /blogs/1/edit
   def edit
+    binding.pry
   end
 
   # POST /blogs
   def create
-    @blog = Blog.new(blog_params)
+    @blog = BlogTag.new(blog_params)
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else
@@ -50,8 +52,19 @@ class BlogsController < ApplicationController
       @blog = Blog.find(params[:id])
     end
 
+    def set_blog_tag
+      blog = Blog.find(params[:id])
+      @blog = BlogTag.new(
+        title: blog.title,
+        content: blog.content
+        tag: blog.tags.map { |t| t.name }.join("")
+      )
+      # binding.pry
+      # @blog = BlogTag.find_form_obj(params[:id])
+    end
+
     # Only allow a trusted parameter "white list" through.
     def blog_params
-      params.require(:blog).permit(:content, :title)
+      params.require(:blog_tag).permit(:content, :tag, :title)
     end
 end
